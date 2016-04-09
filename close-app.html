@@ -7,9 +7,13 @@
             color: white;
             padding-right: 5px;
             cursor: pointer;
+            -webkit-app-region: no-drag;
         }
         :host:hover{
             color: silver;
+        }
+        :host[hidden]{
+            display: none;
         }
     </style>
     <template>
@@ -29,8 +33,20 @@
         is: "close-app",
         properties: {
         },
-
-        ready: function () {
+        listeners: {
+            'tap': 'tap',
+        },
+        ready: function(){
+            this.hidden = true;
+            if('chrome' in window) 
+                if('app' in chrome)
+                    if('window' in chrome.app)
+                        this.hidden = false;
+            // if(!chrome.app.window) this.hidden = true;
+        },
+        tap: function () {
+            alert('close');
+            chrome.app.window.current().close();
         },
     });
 
