@@ -1,0 +1,44 @@
+
+<dom-module id="hamburger-button">
+    <style>
+        :host{
+            display: inline-block;
+            font-size: 30px;
+            color: white;
+            padding-right: 5px;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+        }
+        :host:hover{
+            color: silver;
+        }
+        :host[hidden]{
+            display: none;
+        }
+    </style>
+    <template>
+        &#9776;
+    </template>
+</dom-module>
+
+
+
+
+
+<script>
+    Polymer({
+        is: "hamburger-button",
+        properties: {
+        },
+        listeners: {
+            'tap': 'tap',
+        },
+        ready: function(){
+            this.hidden = false;
+        },
+        tap: function () {
+            document.location.hash = '';
+        },
+    });
+
+</script>

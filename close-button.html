@@ -1,9 +1,9 @@
 
-<dom-module id="close-app">
+<dom-module id="close-button">
     <style>
         :host{
             display: inline-block;
-            font-size: 35px;
+            font-size: 40px;
             color: white;
             padding-right: 5px;
             cursor: pointer;
@@ -30,44 +30,31 @@
 
 <script>
     Polymer({
-        is: "close-app",
+        is: "close-button",
         properties: {
         },
         listeners: {
             'tap': 'tap',
         },
+        
         ready: function(){
-            this.hidden = true;
+            this.system = '';
             if('chrome' in window) 
                 if('app' in chrome)
                     if('window' in chrome.app)
-                        this.hidden = false;
-            // if(!chrome.app.window) this.hidden = true;
+                        this.system = 'chromeOS'
+            if('macOS' in window) 
+                this.system = 'macOS'
+            if(this.system) this.hidden = false;
+            else this.hidden = true;
         },
+
         tap: function () {
-            alert('close');
-            chrome.app.window.current().close();
+            if(this.system == 'chromeOS')
+                chrome.app.window.current().close();
+            if(this.system == 'macOS')
+                window.macOS.hide();
         },
     });
 
-/*        button{
-            float: right;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            font-size: 25px;
-            background: transparent;
-            -webkit-border-radius: 100px;
-            border: 2px solid white;
-            border: none;
-            display: inline-block;
-            width: 36px;
-            height: 36px;
-            margin: 5px;
-        }
-        button:hover{
-            color: silver;
-            border-color: silver;
-        }
-*/
 </script>

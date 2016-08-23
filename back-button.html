@@ -1,0 +1,44 @@
+
+<dom-module id="back-button">
+    <style>
+        :host{
+            display: inline-block;
+            font-size: 35px;
+            color: white;
+            padding-right: 5px;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+        }
+        :host:hover{
+            color: silver;
+        }
+        :host[hidden]{
+            display: none;
+        }
+    </style>
+    <template>
+        &larr;
+    </template>
+</dom-module>
+
+
+
+
+
+<script>
+    Polymer({
+        is: "back-button",
+        properties: {
+        },
+        listeners: {
+            'tap': 'tap',
+        },
+        ready: function(){
+            this.hidden = false;
+        },
+        tap: function () {
+            window.history.back();
+        },
+    });
+
+</script>
