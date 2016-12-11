@@ -1,0 +1,53 @@
+
+<dom-module id="star-toggle">
+    <style>
+        :host{
+            display: inline-block;
+            font-size: 25px;
+            color: orange;
+            padding-right: 5px;
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+        }
+        :host:hover{
+            color: DarkOrange;
+        }
+        span[hidden]{
+            display: none;
+        }
+    </style>
+    <template>
+	    <span hidden$='[[active]]'>&#9734;</span>
+	    <span hidden$='[[!active]]'>&#9733;</span>
+    </template>
+</dom-module>
+
+
+
+
+
+<script>
+    Polymer({
+        is: "star-toggle",
+        properties: {
+        	active: {
+        		type: Boolean,
+        		default: false,
+        		notify: true
+        	}
+        },
+        listeners: {
+            'tap': 'tap',
+        },
+        ready: function(){
+        	if(!this.active) this.active = false;
+        	// console.log('active',this.active);
+        },
+        tap: function () {
+        	this.active = !this.active;
+            this.fire('change');
+        }
+    });
+
+</script>
+

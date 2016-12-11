@@ -1,0 +1,60 @@
+
+
+<dom-module id="add-button">
+    <style>
+        :host{
+            display: block;
+            font-size: 40px;
+            width: 40px;
+            height: 40px;
+            /*vertical-align: top;*/
+            /*text-align: center;*/
+            /*color: white;*/
+            /*padding-right: 5px;*/
+            cursor: pointer;
+            /*-webkit-app-region: no-drag;*/
+            background: CornflowerBlue;
+            -webkit-border-radius: 100px;
+            margin:0;
+            padding:0;
+        }
+        :host:hover{
+            background: #aaf;
+        }
+        div{
+        	display: inline-block;
+        	/*vertical-align: top;*/
+        	color: white;
+        	font-weight: bold;
+        	margin-top: -8px;
+        	/*padding-top: -10px;*/
+        }
+    </style>
+    <template>
+    	<div>
+    	&#65291;
+        <!-- &#x2795; -->
+
+        </div>
+    </template>
+</dom-module>
+
+
+
+
+
+<script>
+    Polymer({
+        is: "add-button",
+        properties: {
+        },
+        listeners: {
+            'tap': 'tap',
+        },
+        ready: function(){
+        },
+        tap: function () {
+        },
+    });
+
+</script>
